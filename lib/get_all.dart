@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:product/bottom_navigator_bar.dart';
 import 'package:product/category_card.dart';
 import 'package:product/product_card.dart';
 import 'package:product/research_bar.dart';
@@ -18,40 +19,58 @@ class _GetAllProductState extends State<GetAllProduct> {
       child: Scaffold(
         body: Container(
           padding: EdgeInsets.all(10),
-          child: const Column(
+          child: Column(
             children: [
-              ResearchBar(),
-              SizedBox(
+              const ResearchBar(),
+              const SizedBox(
                 height: 15,
               ),
-              Row(
-                children: [
-                  CategoryCard(),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  CategoryCard(
-                    category: "Smart Phone",
-                  ),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  CategoryCard(
-                    category: "fragrances",
-                  ),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  CategoryCard(),
-                ],
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    CategoryCard(),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    CategoryCard(
+                      category: "Smart Phone",
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    CategoryCard(
+                      category: "fragrances",
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    CategoryCard(
+                      category: "funiture",
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    CategoryCard(
+                      category: "Computer",
+                    ),
+                  ],
+                ),
               ),
               SizedBox(
                 height: 10,
               ),
-              ProductCard()
+              ProductCard(
+                price: 20,
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              ProductCard(),
             ],
           ),
         ),
+        bottomNavigationBar: BottomNavigatorBar_(),
       ),
     );
   }

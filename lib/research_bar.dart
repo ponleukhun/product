@@ -12,10 +12,11 @@ class ResearchBar extends StatelessWidget {
           child: Container(
             height: 40,
             decoration: BoxDecoration(
-              color: Colors.green[100],
+              color: Colors.green.withOpacity(0.23),
               borderRadius: BorderRadius.circular(5),
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(Icons.sort),
                 Text("Sort"),
@@ -32,7 +33,7 @@ class ResearchBar extends StatelessWidget {
             height: 40,
             padding: EdgeInsets.symmetric(vertical: 5),
             decoration: BoxDecoration(
-                color: Colors.green[100],
+                color: Colors.green.withOpacity(0.23),
                 borderRadius: BorderRadius.circular(5),
                 border: Border.all(width: 1)),
             child: Text(
@@ -47,8 +48,8 @@ class ResearchBar extends StatelessWidget {
           child: Container(
             height: 40,
             decoration: BoxDecoration(
-              color: Colors.green[100],
-              borderRadius: BorderRadius.circular(5),
+              color: Colors.green.withOpacity(0.23),
+              borderRadius: BorderRadius.circular(20),
             ),
             child: Icon(Icons.search),
           ),

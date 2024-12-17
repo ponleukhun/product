@@ -10,7 +10,7 @@ class CategoryCard extends StatelessWidget {
       height: 40,
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Colors.green[100],
+        color: Colors.green[200],
         borderRadius: BorderRadius.circular(5),
       ),
       child: Text(
