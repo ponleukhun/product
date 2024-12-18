@@ -6,25 +6,27 @@ class BottomNavigatorBar_ extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(items: <BottomNavigationBarItem>[
-      BottomNavigationBarItem(
-        icon: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.home),
-          color: Colors.black,
-        ),
-        label: 'Home',
-      ),
-      BottomNavigationBarItem(
+    return BottomNavigationBar(
+      items: <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
           icon: IconButton(
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => AddProduct()));
-            },
-            icon: Icon(Icons.add),
-            color: Colors.black12,
+            onPressed: () {},
+            icon: Icon(Icons.home),
+            color: Colors.black,
           ),
-          label: 'ADD'),
-    ]);
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+            icon: IconButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AddProduct()));
+              },
+              icon: Icon(Icons.add),
+              color: Colors.black12,
+            ),
+            label: 'ADD'),
+      ],
+    );
   }
 }

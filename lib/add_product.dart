@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:product/textfield.dart';
 
+//list of category dropdown
 const List<String> list = <String>[
   "Choose Category",
   'Beauty',
@@ -49,52 +51,25 @@ class _AddProductState extends State<AddProduct> {
             child: Container(
           padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
           color: Colors.white,
-          // child: Column(
-          //   children: [
-          //     TextField(),
-          //     SizedBox(
-          //       height: 10,
-          //     ),
-          //     TextField(),
-          //   ],
-          // ),
-
           child: Column(
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Title"),
-                  TextField(
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.green.withOpacity(0.15),
-                      border: OutlineInputBorder(),
-                      hintText: "Input title",
-                    ),
-                  )
-                ],
+              //Title textfield
+              Textfield(
+                title: "Title",
+                text: "Input Title",
               ),
               SizedBox(
                 height: 10,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Description"),
-                  TextField(
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.green.withOpacity(0.15),
-                      border: OutlineInputBorder(),
-                      hintText: "Input description",
-                    ),
-                  )
-                ],
+              //Description textfield
+              Textfield(
+                title: "Description",
+                text: "Input Description",
               ),
               SizedBox(
                 height: 10,
               ),
+              //category dropdownList
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -143,102 +118,84 @@ class _AddProductState extends State<AddProduct> {
               SizedBox(
                 height: 10,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Price"),
-                  TextField(
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.green.withOpacity(0.15),
-                      border: OutlineInputBorder(),
-                      hintText: "Input Price",
-                    ),
-                  )
-                ],
+              //price textfield
+              Textfield(
+                title: "Price",
+                text: "Input Price",
               ),
               SizedBox(
                 height: 10,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Discount Percent"),
-                  TextField(
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.green.withOpacity(0.15),
-                      border: OutlineInputBorder(),
-                      hintText: "Input Discount Percent",
-                    ),
-                  )
-                ],
+              //discount percent textfield
+              Textfield(
+                title: "Discount Percent",
+                text: "Input Discount Percent",
               ),
               SizedBox(
                 height: 10,
               ),
               Row(
                 children: [
+                  //Rating textfield
                   Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Rating"),
-                        TextField(
-                          decoration: InputDecoration(
-                            filled: true,
-                            fillColor: Colors.green.withOpacity(0.15),
-                            border: OutlineInputBorder(),
-                            hintText: "Input Rating",
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
+                      child: Textfield(
+                    title: "Rating",
+                    text: "Input Rating",
+                  )),
                   SizedBox(
                     width: 10,
                   ),
+                  //Stock textfield
                   Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Stock"),
-                        TextField(
-                          decoration: InputDecoration(
-                            filled: true,
-                            fillColor: Colors.green.withOpacity(0.15),
-                            border: OutlineInputBorder(),
-                            hintText: "Input Stock",
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
+                      child: Textfield(
+                    title: "Stock",
+                    text: "Input Stock",
+                  )),
                 ],
               ),
               SizedBox(
-                height: 20,
+                height: 30,
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Expanded(
-                    child: ElevatedButton(
-                        onPressed: () {},
-                        child: Text(
-                          "Save",
-                          style: TextStyle(color: Colors.black),
-                        )),
+                  // add product button
+                  Container(
+                    padding: EdgeInsets.symmetric(vertical: 7),
+                    height: 40,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.lime.withOpacity(0.4),
+                        border: Border.all(color: Colors.black12),
+                        boxShadow: [
+                          BoxShadow(color: Colors.black12, offset: Offset(0, 1))
+                        ]),
+                    child: Text(
+                      "Add",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.w600),
+                    ),
                   ),
-                  SizedBox(
-                    width: 50,
-                  ),
-                  Expanded(
-                    child: ElevatedButton(
-                        onPressed: () {},
-                        child: Text(
-                          "Cancel",
-                          style: TextStyle(color: Colors.black),
-                        )),
+                  //Cancel button
+                  Container(
+                    padding: EdgeInsets.symmetric(vertical: 7),
+                    height: 40,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.lime.withOpacity(0.4),
+                        border: Border.all(color: Colors.black12),
+                        boxShadow: [
+                          BoxShadow(color: Colors.black12, offset: Offset(0, 1))
+                        ]),
+                    child: Text(
+                      "Cancel",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.w600),
+                    ),
                   ),
                 ],
               )

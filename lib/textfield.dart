@@ -7,25 +7,16 @@ class Textfield extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        height: 80,
-        color: Colors.green,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(title ?? "Title"),
-            TextField(
-              decoration: InputDecoration(
-                //  filled: true,
-                fillColor: Colors.green.withOpacity(0.15),
-                border: OutlineInputBorder(),
-                hintText: text ?? "Input title",
-              ),
-            )
-          ],
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text(title ?? ""),
+      TextField(
+        decoration: InputDecoration(
+          filled: true,
+          fillColor: Colors.green.withOpacity(0.15),
+          border: OutlineInputBorder(),
+          hintText: text ?? "",
         ),
-      ),
-    );
+      )
+    ]);
   }
 }
