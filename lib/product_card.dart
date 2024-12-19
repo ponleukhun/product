@@ -51,7 +51,8 @@ class ProductCard extends StatelessWidget {
                         flex: 5,
                         child: Text(
                           title ?? "Essence Mascara Lash Princess ",
-                          style: TextStyle(fontSize: 11),
+                          style: TextStyle(
+                              fontSize: 11, fontWeight: FontWeight.w500),
                         ),
                       ),
                       Expanded(

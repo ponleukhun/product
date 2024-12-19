@@ -166,7 +166,7 @@ class _AddProductState extends State<AddProduct> {
                     width: 100,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Colors.lime.withOpacity(0.4),
+                        color: Colors.green[200],
                         border: Border.all(color: Colors.black12),
                         boxShadow: [
                           BoxShadow(color: Colors.black12, offset: Offset(0, 1))
@@ -185,7 +185,7 @@ class _AddProductState extends State<AddProduct> {
                     width: 100,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Colors.lime.withOpacity(0.4),
+                        color: Colors.green[200],
                         border: Border.all(color: Colors.black12),
                         boxShadow: [
                           BoxShadow(color: Colors.black12, offset: Offset(0, 1))
