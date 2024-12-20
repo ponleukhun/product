@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:product/add_product.dart';
+import 'package:product/review.dart';
 
 class DetailProduct extends StatelessWidget {
   final void Function()? onDelete;
@@ -92,388 +93,284 @@ class DetailProduct extends StatelessWidget {
           ],
         ),
         body: SingleChildScrollView(
-          child: Column(
+          child: Container(
+            color: Colors.white,
+            padding: EdgeInsets.all(10),
+            child: Column(
+              children: [
+                _banner(),
+                _productInfo(),
+                _reviewList(),
+              ],
+            ),
+          ),
+        ));
+  }
+
+  Widget _banner() {
+    return Container(
+      width: double.infinity,
+      height: 150,
+      child: Image.network(
+        'https://th.bing.com/th/id/OIP.jX61ytVi7DIfFXwdcEr9JAHaEf?rs=1&pid=ImgDetMain',
+        loadingBuilder: (BuildContext context, Widget child,
+            ImageChunkEvent? loadingProgress) {
+          if (loadingProgress == null) {
+            return child;
+          }
+          return Center(
+            child: CircularProgressIndicator(
+              value: loadingProgress.expectedTotalBytes != null
+                  ? loadingProgress.cumulativeBytesLoaded /
+                      (loadingProgress.expectedTotalBytes ?? 1)
+                  : null,
+            ),
+          );
+        },
+        errorBuilder:
+            (BuildContext context, Object error, StackTrace? stackTrace) {
+          return Center(
+            child: Text(
+              'Image failed to load',
+              style: TextStyle(color: Colors.red),
+            ),
+          );
+        },
+        width: double.infinity,
+      ),
+    );
+  }
+
+  Widget _productInfo() {
+    return Container(
+      padding: EdgeInsets.all(10),
+      width: double.infinity,
+      decoration: BoxDecoration(
+          color: Colors.green.withOpacity(0.15),
+          borderRadius: BorderRadius.horizontal(
+              left: Radius.circular(15), right: Radius.circular(15))),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title ?? "Essence Mascara Lash Princess",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+          ),
+          Text(category ?? "Beauty"),
+          Container(
+            height: 1,
+            color: Colors.white,
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Row(children: [
+            Text(
+              "Price: ",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+            ),
+            Text(
+              price != null ? price.toString() : "10",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+            ),
+            Text(
+              "\$",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+            )
+          ]),
+          Container(
+            height: 1,
+            color: Colors.white,
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Row(
             children: [
-              Container(
-                padding: EdgeInsets.all(10),
-                color: Colors.white,
-                height: 1000,
-                width: double.infinity,
-                child: Column(
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: Container(
-                        margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.black12,
-                                  offset: Offset(0, 2),
-                                  blurRadius: 3)
-                            ]),
-                        child: Image.network(
-                          'https://th.bing.com/th/id/OIP.jX61ytVi7DIfFXwdcEr9JAHaEf?rs=1&pid=ImgDetMain',
-                          width: double.infinity,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                        flex: 8,
-                        child: Container(
-                          padding: EdgeInsets.all(10),
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                              border:
-                                  Border.all(width: 0.2, color: Colors.black12),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black12,
-                                  offset: Offset(0, 3),
-                                  blurRadius: 3,
-                                )
-                              ]),
-                          child: Column(
-                            children: [
-                              Expanded(
-                                flex: 3,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      title ?? "Essence Mascara Lash Princess",
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                    Text(category ?? "Beauty"),
-                                  ],
-                                ),
-                              ),
-                              Expanded(
-                                  flex: 1,
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        height: 1,
-                                        color: Colors.black12,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Text(
-                                                "Price: ",
-                                                style: TextStyle(
-                                                    fontSize: 18,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                              ),
-                                              Text(
-                                                price != null
-                                                    ? price.toString()
-                                                    : "10",
-                                                style: TextStyle(
-                                                    fontSize: 20,
-                                                    fontWeight:
-                                                        FontWeight.w500),
-                                              ),
-                                              Text(
-                                                "\$",
-                                                style: TextStyle(
-                                                    fontSize: 20,
-                                                    fontWeight:
-                                                        FontWeight.w500),
-                                              )
-                                            ],
-                                          ),
-                                          Row(
-                                            children: [
-                                              Text(
-                                                "Discount: ",
-                                                style: TextStyle(
-                                                    fontSize: 18,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                              ),
-                                              Text(
-                                                price != null
-                                                    ? price.toString()
-                                                    : "10",
-                                                style: TextStyle(
-                                                    fontSize: 20,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.red[300]),
-                                              ),
-                                              Text(
-                                                "%",
-                                                style: TextStyle(
-                                                    fontSize: 20,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.red[300]),
-                                              )
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  )),
-                              Expanded(
-                                  flex: 4,
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        height: 0.5,
-                                        color: Colors.black12,
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            "Description",
-                                            style: TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                          Text(description ??
-                                              "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula."),
-                                        ],
-                                      ),
-                                    ],
-                                  )),
-                              Expanded(
-                                  flex: 1,
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        height: 1,
-                                        color: Colors.black12,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "Stock",
-                                            style: TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                          Text(
-                                            stock != null
-                                                ? stock.toString()
-                                                : "10",
-                                            style: TextStyle(fontSize: 15),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  )),
-                              Expanded(
-                                  flex: 1,
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        height: 1,
-                                        color: Colors.black12,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "Rating",
-                                            style: TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                          Row(
-                                            children: [
-                                              Icon(
-                                                Icons.star,
-                                                color: Colors.yellow,
-                                              ),
-                                              SizedBox(
-                                                width: 5,
-                                              ),
-                                              Text(
-                                                rating != null
-                                                    ? rating.toString()
-                                                    : "3.6",
-                                                style: TextStyle(fontSize: 15),
-                                              ),
-                                            ],
-                                          )
-                                        ],
-                                      )
-                                    ],
-                                  )),
-                              Expanded(
-                                  flex: 4,
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Container(
-                                        height: 0.5,
-                                        color: Colors.black12,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "Brand",
-                                            style: TextStyle(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                          Text(
-                                            brand ?? "Essence",
-                                            style: TextStyle(fontSize: 15),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "Waranty Information",
-                                            style: TextStyle(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                          Text(
-                                            warranty ?? "1 month warranty",
-                                            style: TextStyle(fontSize: 15),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "Shipping Information",
-                                            style: TextStyle(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                          Text(
-                                            warranty ?? "Ships in 1 month",
-                                            style: TextStyle(fontSize: 15),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "Availability Status",
-                                            style: TextStyle(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                          Text(
-                                            warranty ?? "Low Stock",
-                                            style: TextStyle(fontSize: 15),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ))
-                            ],
-                          ),
-                        )),
-                    Expanded(
-                        flex: 2,
-                        child: Container(
-                          width: double.infinity,
-                          margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          padding: EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                              border:
-                                  Border.all(width: 0.2, color: Colors.black12),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black12,
-                                  offset: Offset(0, 3),
-                                  blurRadius: 3,
-                                )
-                              ]),
-                          child: Column(
-                            children: [
-                              Text(reviewerName ?? "Scarlett Wright",
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w600)),
-                              Text(
-                                email ?? "scarlett.wright@x.dummyjson.com",
-                              ),
-                              Container(
-                                height: 1,
-                                color: Colors.black12,
-                              ),
-                              Row(
-                                children: [
-                                  Expanded(
-                                      flex: 3,
-                                      child: Text(
-                                        comment ??
-                                            "Very unhappy with my purchase!",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w200),
-                                      )),
-                                  Expanded(
-                                      flex: 1,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        children: [
-                                          Icon(
-                                            Icons.star,
-                                            color: Colors.yellow,
-                                          ),
-                                          Text(reviewerRating != null
-                                              ? reviewerRating.toString()
-                                              : "3")
-                                        ],
-                                      ))
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    date != null
-                                        ? date.toString()
-                                        : "2024-05-23 08:56:21",
-                                    style: TextStyle(color: Colors.black45),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                        ))
-                  ],
+              Text(
+                "Discount: ",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              ),
+              Text(
+                price != null ? price.toString() : "10",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
                 ),
+              ),
+              Text(
+                "%",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                ),
+              )
+            ],
+          ),
+          Container(
+            height: 1,
+            color: Colors.white,
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Text(
+            "Description",
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+          ),
+          Text(description ??
+              "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula."),
+          Container(
+            height: 1,
+            color: Colors.white,
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Stock",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              ),
+              Text(
+                stock != null ? stock.toString() : "10",
+                style: TextStyle(fontSize: 15),
               ),
             ],
           ),
-        ));
+          Container(
+            height: 1,
+            color: Colors.white,
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Rating",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              ),
+              Row(
+                children: [
+                  Icon(
+                    Icons.star,
+                    color: Colors.yellow,
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    rating != null ? rating.toString() : "3.6",
+                    style: TextStyle(fontSize: 15),
+                  ),
+                ],
+              )
+            ],
+          ),
+          Container(
+            height: 1,
+            color: Colors.white,
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Brand",
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+              ),
+              Text(
+                brand ?? "Essence",
+                style: TextStyle(fontSize: 15),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Waranty Information",
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+              ),
+              Text(
+                warranty ?? "1 month warranty",
+                style: TextStyle(fontSize: 15),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Shipping Information",
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+              ),
+              Text(
+                warranty ?? "Ships in 1 month",
+                style: TextStyle(fontSize: 15),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Availability Status",
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+              ),
+              Text(
+                warranty ?? "Low Stock",
+                style: TextStyle(fontSize: 15),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 15,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _reviewList() {
+    return SizedBox(
+      height: 150,
+      width: double.infinity,
+      child: ListView.builder(
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        physics: AlwaysScrollableScrollPhysics(),
+        itemCount: 3,
+        itemBuilder: (context, index) {
+          return Review();
+          // return Container(
+          //   color: Colors.grey,
+          //   width: MediaQuery.of(context).size.width,
+          //   child: Padding(
+          //     padding: const EdgeInsets.all(5.0),
+          //     child: Text(
+          //       'Separator $index',
+          //       style: TextStyle(color: Colors.white),
+          //     ),
+          //   ),
+          // );
+        },
+      ),
+    );
   }
 }

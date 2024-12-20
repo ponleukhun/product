@@ -46,6 +46,12 @@ class _GetAllProductState extends State<GetAllProduct> {
                     ),
                     CategoryCard(
                       category: "Smart Phone",
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CategoryList()));
+                      },
                     ),
                     SizedBox(
                       width: 5,
