@@ -78,10 +78,15 @@ class AllProductPage extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
+              // ListView.builder(itemCount: state.productList.value.length,
+              //     itemBuilder:  (BuildContext context, int index) {
+              //   return ProductCard();
+              // }),
               SingleChildScrollView(
                 scrollDirection: Axis.vertical,
                 child: Column(
                   children: [
+                    Text("${state.productList.value.length}"),
                     ProductCard(
                       price: 20,
                       discountPercent: 70,
