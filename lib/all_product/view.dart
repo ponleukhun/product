@@ -1,21 +1,22 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:product/add_product.dart';
-import 'package:product/bottom_navigator_bar.dart';
-import 'package:product/category_card.dart';
-import 'package:product/category_list.dart';
-import 'package:product/detail_product.dart';
-import 'package:product/product_card.dart';
-import 'package:product/research_bar.dart';
+import 'package:get/get.dart';
+import 'package:product/route/app_route.dart';
 
-class GetAllProduct extends StatefulWidget {
-  const GetAllProduct({super.key});
+import '../add_product.dart';
+import '../category_card.dart';
+import '../category_list.dart';
+import '../detail_product.dart';
+import '../product_card.dart';
+import '../research_bar.dart';
+import 'logic.dart';
+import 'state.dart';
 
-  @override
-  State<GetAllProduct> createState() => _GetAllProductState();
-}
+class AllProductPage extends StatelessWidget {
+  AllProductPage({Key? key}) : super(key: key);
 
-class _GetAllProductState extends State<GetAllProduct> {
+  final AllProductLogic logic = Get.put(AllProductLogic());
+  final AllProductState state = Get.find<AllProductLogic>().state;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -85,10 +86,7 @@ class _GetAllProductState extends State<GetAllProduct> {
                       price: 20,
                       discountPercent: 70,
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => DetailProduct()));
+                        Get.toNamed(AppRoute.PRODUCTDETAIL);
                       },
                       onUpdate: () {
                         Navigator.push(
