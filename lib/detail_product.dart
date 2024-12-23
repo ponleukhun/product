@@ -156,103 +156,63 @@ class DetailProduct extends StatelessWidget {
             title ?? "Essence Mascara Lash Princess",
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
           ),
-          Text(category ?? "Beauty"),
-          Container(
-            height: 1,
-            color: Colors.white,
-          ),
           SizedBox(
-            height: 15,
-          ),
-          Row(children: [
-            Text(
-              "Price: ",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-            ),
-            Text(
-              price != null ? price.toString() : "10",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-            ),
-            Text(
-              "\$",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-            )
-          ]),
-          Container(
-            height: 1,
-            color: Colors.white,
-          ),
-          SizedBox(
-            height: 15,
+            height: 5,
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Discount: ",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                "\$" + (price != null ? price.toString() : "10"),
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
               ),
               Text(
-                price != null ? price.toString() : "10",
+                price != null ? price.toString() : "10" + "% off",
                 style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                ),
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.red.shade600),
               ),
-              Text(
-                "%",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                ),
-              )
             ],
           ),
-          Container(
-            height: 1,
-            color: Colors.white,
-          ),
           SizedBox(
-            height: 15,
-          ),
-          Text(
-            "Description",
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+            height: 5,
           ),
           Text(description ??
               "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula."),
+          SizedBox(
+            height: 5,
+          ),
           Container(
-            height: 1,
-            color: Colors.white,
+            height: 0.25,
+            width: double.infinity,
+            color: Colors.black38,
           ),
           SizedBox(
-            height: 15,
+            height: 5,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 "Stock",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
               ),
               Text(
                 stock != null ? stock.toString() : "10",
-                style: TextStyle(fontSize: 15),
+                style: TextStyle(fontSize: 14),
               ),
             ],
           ),
-          Container(
-            height: 1,
-            color: Colors.white,
-          ),
           SizedBox(
-            height: 15,
+            height: 5,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 "Rating",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
               ),
               Row(
                 children: [
@@ -265,82 +225,78 @@ class DetailProduct extends StatelessWidget {
                   ),
                   Text(
                     rating != null ? rating.toString() : "3.6",
-                    style: TextStyle(fontSize: 15),
+                    style: TextStyle(fontSize: 14),
                   ),
                 ],
               )
             ],
           ),
-          Container(
-            height: 1,
-            color: Colors.white,
-          ),
           SizedBox(
-            height: 15,
+            height: 5,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 "Brand",
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
               ),
               Text(
                 brand ?? "Essence",
-                style: TextStyle(fontSize: 15),
+                style: TextStyle(fontSize: 14),
               ),
             ],
           ),
           SizedBox(
-            height: 15,
+            height: 5,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 "Waranty Information",
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
               ),
               Text(
                 warranty ?? "1 month warranty",
-                style: TextStyle(fontSize: 15),
+                style: TextStyle(fontSize: 14),
               ),
             ],
           ),
           SizedBox(
-            height: 15,
+            height: 5,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 "Shipping Information",
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
               ),
               Text(
                 warranty ?? "Ships in 1 month",
-                style: TextStyle(fontSize: 15),
+                style: TextStyle(fontSize: 14),
               ),
             ],
           ),
           SizedBox(
-            height: 15,
+            height: 5,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 "Availability Status",
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
               ),
               Text(
                 warranty ?? "Low Stock",
-                style: TextStyle(fontSize: 15),
+                style: TextStyle(fontSize: 14),
               ),
             ],
           ),
           SizedBox(
-            height: 15,
+            height: 5,
           ),
         ],
       ),
@@ -358,17 +314,6 @@ class DetailProduct extends StatelessWidget {
         itemCount: 3,
         itemBuilder: (context, index) {
           return Review();
-          // return Container(
-          //   color: Colors.grey,
-          //   width: MediaQuery.of(context).size.width,
-          //   child: Padding(
-          //     padding: const EdgeInsets.all(5.0),
-          //     child: Text(
-          //       'Separator $index',
-          //       style: TextStyle(color: Colors.white),
-          //     ),
-          //   ),
-          // );
         },
       ),
     );

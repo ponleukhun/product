@@ -141,9 +141,8 @@ class ProductCard extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Text(price != null ? price.toString() : '12',
+                          Text('\$' + (price != null ? price.toString() : '12'),
                               style: TextStyle(fontSize: 12)),
-                          Text('\$', style: TextStyle(fontSize: 12)),
                         ],
                       ),
                       Row(
