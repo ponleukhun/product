@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:product/add_product/widget/textFeild_card.dart';
 
-//list of category dropdown
-const List<String> list = <String>[
-  "Choose Category",
-  'Beauty',
-  'Smart Phone',
-  'Fregants',
-  'Funiture'
-];
+import 'logic.dart';
+import 'state.dart';
 
-class AddProduct extends StatefulWidget {
-  const AddProduct({super.key});
+class AddProductPage extends StatefulWidget {
+  AddProductPage({Key? key}) : super(key: key);
 
   @override
-  State<AddProduct> createState() => _AddProductState();
+  State<AddProductPage> createState() => _AddProductPageState();
 }
 
-class _AddProductState extends State<AddProduct> {
-  String dropdownValue = list.first;
+class _AddProductPageState extends State<AddProductPage> {
+  final AddProductLogic logic = Get.put(AddProductLogic());
+
+  final AddProductState state = Get.find<AddProductLogic>().state;
 
   @override
   Widget build(BuildContext context) {
@@ -83,36 +80,34 @@ class _AddProductState extends State<AddProduct> {
                         color: Colors.green.withOpacity(0.15),
                         borderRadius: BorderRadius.circular(5),
                         border: Border.all(width: 1)),
-                    child: DropdownButton<String>(
-                      value: dropdownValue,
-                      icon: const Icon(Icons.arrow_drop_down),
-                      elevation: 16,
-                      style: const TextStyle(color: Colors.black87),
-                      underline: Container(
-                        height: 0,
-                        color: Colors.green.withOpacity(0.15),
-                      ),
-                      isExpanded: true,
-                      menuWidth: 250,
-                      onChanged: (String? value) {
-                        // This is called when the user selects an item.
-                        setState(() {
-                          dropdownValue = value!;
-                        });
-                      },
-                      items: list.map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(
-                            value,
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.black.withOpacity(0.75)),
-                          ),
-                        );
-                      }).toList(),
-                    ),
+                    // child: DropdownButton<String>(
+                    //
+                    //   icon: const Icon(Icons.arrow_drop_down),
+                    //   elevation: 16,
+                    //   style: const TextStyle(color: Colors.black87),
+                    //   underline: Container(
+                    //     height: 0,
+                    //     color: Colors.green.withOpacity(0.15),
+                    //   ),
+                    //   isExpanded: true,
+                    //   menuWidth: 250,
+                    //   onChanged: (String? value) {
+                    //     // This is called when the user selects an item.
+                    //
+                    //   },
+                    // items: map<DropdownMenuItem<String>>((String value) {
+                    //   return DropdownMenuItem<String>(
+                    //     value: value,
+                    //     child: Text(
+                    //       value,
+                    //       style: TextStyle(
+                    //           fontSize: 15,
+                    //           fontWeight: FontWeight.w500,
+                    //           color: Colors.black.withOpacity(0.75)),
+                    //     ),
+                    //   );
+                    //}).toList(),
+                    // ),
                   )
                 ],
               ),

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:product/add_product/view.dart';
 
 import 'logic.dart';
 

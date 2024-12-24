@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class CategoryCard extends StatelessWidget {
   final String? category;
-  final void Function()? onPressed;
-  const CategoryCard({super.key, this.category, this.onPressed});
+
+  const CategoryCard({super.key, this.category});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onPressed,
+      onTap: () {},
       child: Container(
         height: 40,
         padding: EdgeInsets.all(10),
@@ -17,7 +17,7 @@ class CategoryCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(5),
         ),
         child: Text(
-          category ?? "Beauty",
+          "Beauty",
           textAlign: TextAlign.center,
         ),
       ),

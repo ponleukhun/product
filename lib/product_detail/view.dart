@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:product/product_detail/widget/review.dart';
 
-import '../add_product.dart';
-import '../review.dart';
 import 'logic.dart';
 import 'state.dart';
 
@@ -47,10 +46,7 @@ class ProductDetailPage extends StatelessWidget {
                     "Update",
                     selectionColor: Colors.lightBlueAccent,
                   ),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => AddProduct()));
-                  },
+                  onPressed: () {},
                 ),
 
                 ///Delete To Do

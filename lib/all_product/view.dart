@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:product/all_product/Widget/category_card.dart';
+import 'package:product/all_product/Widget/product_card.dart';
+import 'package:product/all_product/Widget/research_bar.dart';
 import 'package:product/route/app_route.dart';
 
-import '../add_product.dart';
-import '../category_card.dart';
-import '../category_list.dart';
-import '../detail_product.dart';
-import '../product_card.dart';
-import '../research_bar.dart';
 import 'logic.dart';
 import 'state.dart';
 
@@ -35,24 +32,12 @@ class AllProductPage extends StatelessWidget {
                   children: [
                     CategoryCard(
                       category: "Beauty",
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => CategoryList()));
-                      },
                     ),
                     const SizedBox(
                       width: 5,
                     ),
                     CategoryCard(
                       category: "Smart Phone",
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => CategoryList()));
-                      },
                     ),
                     SizedBox(
                       width: 5,
@@ -88,54 +73,44 @@ class AllProductPage extends StatelessWidget {
                   children: [
                     Text("${state.productList.value.length}"),
                     ProductCard(
-                      price: 20,
-                      discountPercent: 70,
+                      // price: 20,
+                      // discountPercent: 70,
+                      //
+                      // onUpdate: () {
+                      //   Get.toNamed(AppRoute.ADDPRODUCT);
+                      // },
                       onPressed: () {
                         Get.toNamed(AppRoute.PRODUCTDETAIL);
                       },
-                      onUpdate: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => AddProduct()));
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    ProductCard(
+                      // discountPercent: 50,
+                      // price: 11.6,
+                      //
+                      // onUpdate: () {
+                      //   Get.toNamed(AppRoute.ADDPRODUCT);
+                      // }),
+                      onPressed: () {
+                        Get.toNamed(AppRoute.PRODUCTDETAIL);
                       },
                     ),
                     const SizedBox(
                       height: 15,
                     ),
                     ProductCard(
-                        discountPercent: 50,
-                        price: 11.6,
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => DetailProduct()));
-                        },
-                        onUpdate: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AddProduct()));
-                        }),
-                    const SizedBox(
-                      height: 15,
+                      // discountPercent: 50,
+                      // price: 11.6,
+                      //
+                      // onUpdate: () {
+                      //   Get.toNamed(AppRoute.ADDPRODUCT);
+                      // }
+                      onPressed: () {
+                        Get.toNamed(AppRoute.PRODUCTDETAIL);
+                      },
                     ),
-                    ProductCard(
-                        discountPercent: 50,
-                        price: 11.6,
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => DetailProduct()));
-                        },
-                        onUpdate: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AddProduct()));
-                        }),
                     const SizedBox(
                       height: 15,
                     ),
@@ -149,12 +124,7 @@ class AllProductPage extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             ///show buttom sheet of Add
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const AddProduct(),
-              ),
-            );
+            Get.toNamed(AppRoute.ADDPRODUCT);
           },
           backgroundColor: Colors.green[200],
           shape: const CircleBorder(),
