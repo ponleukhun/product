@@ -11,8 +11,8 @@ _$ReviewImpl _$$ReviewImplFromJson(Map<String, dynamic> json) => _$ReviewImpl(
       comment: json['comment'] as String?,
       date:
           json['date'] == null ? null : DateTime.parse(json['date'] as String),
-      reviewerName: json['reviewer_name'] as String?,
-      reviewerEmail: json['reviewer_email'] as String?,
+      reviewerName: json['reviewerName'] as String?,
+      reviewerEmail: json['reviewerEmail'] as String?,
     );
 
 Map<String, dynamic> _$$ReviewImplToJson(_$ReviewImpl instance) =>
@@ -20,6 +20,6 @@ Map<String, dynamic> _$$ReviewImplToJson(_$ReviewImpl instance) =>
       'rating': instance.rating,
       'comment': instance.comment,
       'date': instance.date?.toIso8601String(),
-      'reviewer_name': instance.reviewerName,
-      'reviewer_email': instance.reviewerEmail,
+      'reviewerName': instance.reviewerName,
+      'reviewerEmail': instance.reviewerEmail,
     };

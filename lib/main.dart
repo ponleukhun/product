@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:get/get_navigation/src/routes/get_route.dart';
-import 'package:product/add_product.dart';
-import 'package:product/all_product/binding.dart';
+
 import 'package:product/all_product/view.dart';
 import 'package:product/route/app_route.dart';
 

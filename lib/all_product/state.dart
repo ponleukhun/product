@@ -3,4 +3,5 @@ import 'package:product/model/product_response/product_response.dart';
 
 class AllProductState {
   var productList = <ProductResponse>[].obs;
+  var categories = <String>[].obs;
 }

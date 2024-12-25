@@ -21,27 +21,49 @@ ProductResponse _$ProductResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ProductResponse {
   int? get id => throw _privateConstructorUsedError;
+  set id(int? value) => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
+  set title(String? value) => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
+  set description(String? value) => throw _privateConstructorUsedError;
   String? get category => throw _privateConstructorUsedError;
+  set category(String? value) => throw _privateConstructorUsedError;
   double? get price => throw _privateConstructorUsedError;
+  set price(double? value) => throw _privateConstructorUsedError;
   double? get discountPercentage => throw _privateConstructorUsedError;
+  set discountPercentage(double? value) => throw _privateConstructorUsedError;
   double? get rating => throw _privateConstructorUsedError;
+  set rating(double? value) => throw _privateConstructorUsedError;
   int? get stock => throw _privateConstructorUsedError;
+  set stock(int? value) => throw _privateConstructorUsedError;
   List<String>? get tags => throw _privateConstructorUsedError;
+  set tags(List<String>? value) => throw _privateConstructorUsedError;
   String? get brand => throw _privateConstructorUsedError;
+  set brand(String? value) => throw _privateConstructorUsedError;
   String? get sku => throw _privateConstructorUsedError;
+  set sku(String? value) => throw _privateConstructorUsedError;
   int? get weight => throw _privateConstructorUsedError;
+  set weight(int? value) => throw _privateConstructorUsedError;
   Dimensions? get dimensions => throw _privateConstructorUsedError;
+  set dimensions(Dimensions? value) => throw _privateConstructorUsedError;
   String? get warrantyInformation => throw _privateConstructorUsedError;
+  set warrantyInformation(String? value) => throw _privateConstructorUsedError;
   String? get shippingInformation => throw _privateConstructorUsedError;
+  set shippingInformation(String? value) => throw _privateConstructorUsedError;
   String? get availabilityStatus => throw _privateConstructorUsedError;
+  set availabilityStatus(String? value) => throw _privateConstructorUsedError;
   List<Review>? get reviews => throw _privateConstructorUsedError;
+  set reviews(List<Review>? value) => throw _privateConstructorUsedError;
   String? get returnPolicy => throw _privateConstructorUsedError;
+  set returnPolicy(String? value) => throw _privateConstructorUsedError;
   int? get minimumOrderQuantity => throw _privateConstructorUsedError;
+  set minimumOrderQuantity(int? value) => throw _privateConstructorUsedError;
   Meta? get meta => throw _privateConstructorUsedError;
+  set meta(Meta? value) => throw _privateConstructorUsedError;
   List<String>? get images => throw _privateConstructorUsedError;
+  set images(List<String>? value) => throw _privateConstructorUsedError;
   String? get thumbnail => throw _privateConstructorUsedError;
+  set thumbnail(String? value) => throw _privateConstructorUsedError;
 
   /// Serializes this ProductResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -354,7 +376,7 @@ class __$$ProductResponseImplCopyWithImpl<$Res>
           : stock // ignore: cast_nullable_to_non_nullable
               as int?,
       tags: freezed == tags
-          ? _value._tags
+          ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       brand: freezed == brand
@@ -386,7 +408,7 @@ class __$$ProductResponseImplCopyWithImpl<$Res>
           : availabilityStatus // ignore: cast_nullable_to_non_nullable
               as String?,
       reviews: freezed == reviews
-          ? _value._reviews
+          ? _value.reviews
           : reviews // ignore: cast_nullable_to_non_nullable
               as List<Review>?,
       returnPolicy: freezed == returnPolicy
@@ -402,7 +424,7 @@ class __$$ProductResponseImplCopyWithImpl<$Res>
           : meta // ignore: cast_nullable_to_non_nullable
               as Meta?,
       images: freezed == images
-          ? _value._images
+          ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       thumbnail: freezed == thumbnail
@@ -414,7 +436,8 @@ class __$$ProductResponseImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.none)
 class _$ProductResponseImpl implements _ProductResponse {
   _$ProductResponseImpl(
       {this.id,
@@ -425,7 +448,7 @@ class _$ProductResponseImpl implements _ProductResponse {
       this.discountPercentage,
       this.rating,
       this.stock,
-      final List<String>? tags,
+      this.tags,
       this.brand,
       this.sku,
       this.weight,
@@ -433,159 +456,65 @@ class _$ProductResponseImpl implements _ProductResponse {
       this.warrantyInformation,
       this.shippingInformation,
       this.availabilityStatus,
-      final List<Review>? reviews,
+      this.reviews,
       this.returnPolicy,
       this.minimumOrderQuantity,
       this.meta,
-      final List<String>? images,
-      this.thumbnail})
-      : _tags = tags,
-        _reviews = reviews,
-        _images = images;
+      this.images,
+      this.thumbnail});
 
   factory _$ProductResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductResponseImplFromJson(json);
 
   @override
-  final int? id;
+  int? id;
   @override
-  final String? title;
+  String? title;
   @override
-  final String? description;
+  String? description;
   @override
-  final String? category;
+  String? category;
   @override
-  final double? price;
+  double? price;
   @override
-  final double? discountPercentage;
+  double? discountPercentage;
   @override
-  final double? rating;
+  double? rating;
   @override
-  final int? stock;
-  final List<String>? _tags;
+  int? stock;
   @override
-  List<String>? get tags {
-    final value = _tags;
-    if (value == null) return null;
-    if (_tags is EqualUnmodifiableListView) return _tags;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  List<String>? tags;
   @override
-  final String? brand;
+  String? brand;
   @override
-  final String? sku;
+  String? sku;
   @override
-  final int? weight;
+  int? weight;
   @override
-  final Dimensions? dimensions;
+  Dimensions? dimensions;
   @override
-  final String? warrantyInformation;
+  String? warrantyInformation;
   @override
-  final String? shippingInformation;
+  String? shippingInformation;
   @override
-  final String? availabilityStatus;
-  final List<Review>? _reviews;
+  String? availabilityStatus;
   @override
-  List<Review>? get reviews {
-    final value = _reviews;
-    if (value == null) return null;
-    if (_reviews is EqualUnmodifiableListView) return _reviews;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  List<Review>? reviews;
   @override
-  final String? returnPolicy;
+  String? returnPolicy;
   @override
-  final int? minimumOrderQuantity;
+  int? minimumOrderQuantity;
   @override
-  final Meta? meta;
-  final List<String>? _images;
+  Meta? meta;
   @override
-  List<String>? get images {
-    final value = _images;
-    if (value == null) return null;
-    if (_images is EqualUnmodifiableListView) return _images;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  List<String>? images;
   @override
-  final String? thumbnail;
+  String? thumbnail;
 
   @override
   String toString() {
     return 'ProductResponse(id: $id, title: $title, description: $description, category: $category, price: $price, discountPercentage: $discountPercentage, rating: $rating, stock: $stock, tags: $tags, brand: $brand, sku: $sku, weight: $weight, dimensions: $dimensions, warrantyInformation: $warrantyInformation, shippingInformation: $shippingInformation, availabilityStatus: $availabilityStatus, reviews: $reviews, returnPolicy: $returnPolicy, minimumOrderQuantity: $minimumOrderQuantity, meta: $meta, images: $images, thumbnail: $thumbnail)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ProductResponseImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.category, category) ||
-                other.category == category) &&
-            (identical(other.price, price) || other.price == price) &&
-            (identical(other.discountPercentage, discountPercentage) ||
-                other.discountPercentage == discountPercentage) &&
-            (identical(other.rating, rating) || other.rating == rating) &&
-            (identical(other.stock, stock) || other.stock == stock) &&
-            const DeepCollectionEquality().equals(other._tags, _tags) &&
-            (identical(other.brand, brand) || other.brand == brand) &&
-            (identical(other.sku, sku) || other.sku == sku) &&
-            (identical(other.weight, weight) || other.weight == weight) &&
-            (identical(other.dimensions, dimensions) ||
-                other.dimensions == dimensions) &&
-            (identical(other.warrantyInformation, warrantyInformation) ||
-                other.warrantyInformation == warrantyInformation) &&
-            (identical(other.shippingInformation, shippingInformation) ||
-                other.shippingInformation == shippingInformation) &&
-            (identical(other.availabilityStatus, availabilityStatus) ||
-                other.availabilityStatus == availabilityStatus) &&
-            const DeepCollectionEquality().equals(other._reviews, _reviews) &&
-            (identical(other.returnPolicy, returnPolicy) ||
-                other.returnPolicy == returnPolicy) &&
-            (identical(other.minimumOrderQuantity, minimumOrderQuantity) ||
-                other.minimumOrderQuantity == minimumOrderQuantity) &&
-            (identical(other.meta, meta) || other.meta == meta) &&
-            const DeepCollectionEquality().equals(other._images, _images) &&
-            (identical(other.thumbnail, thumbnail) ||
-                other.thumbnail == thumbnail));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hashAll([
-        runtimeType,
-        id,
-        title,
-        description,
-        category,
-        price,
-        discountPercentage,
-        rating,
-        stock,
-        const DeepCollectionEquality().hash(_tags),
-        brand,
-        sku,
-        weight,
-        dimensions,
-        warrantyInformation,
-        shippingInformation,
-        availabilityStatus,
-        const DeepCollectionEquality().hash(_reviews),
-        returnPolicy,
-        minimumOrderQuantity,
-        meta,
-        const DeepCollectionEquality().hash(_images),
-        thumbnail
-      ]);
 
   /// Create a copy of ProductResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -606,76 +535,98 @@ class _$ProductResponseImpl implements _ProductResponse {
 
 abstract class _ProductResponse implements ProductResponse {
   factory _ProductResponse(
-      {final int? id,
-      final String? title,
-      final String? description,
-      final String? category,
-      final double? price,
-      final double? discountPercentage,
-      final double? rating,
-      final int? stock,
-      final List<String>? tags,
-      final String? brand,
-      final String? sku,
-      final int? weight,
-      final Dimensions? dimensions,
-      final String? warrantyInformation,
-      final String? shippingInformation,
-      final String? availabilityStatus,
-      final List<Review>? reviews,
-      final String? returnPolicy,
-      final int? minimumOrderQuantity,
-      final Meta? meta,
-      final List<String>? images,
-      final String? thumbnail}) = _$ProductResponseImpl;
+      {int? id,
+      String? title,
+      String? description,
+      String? category,
+      double? price,
+      double? discountPercentage,
+      double? rating,
+      int? stock,
+      List<String>? tags,
+      String? brand,
+      String? sku,
+      int? weight,
+      Dimensions? dimensions,
+      String? warrantyInformation,
+      String? shippingInformation,
+      String? availabilityStatus,
+      List<Review>? reviews,
+      String? returnPolicy,
+      int? minimumOrderQuantity,
+      Meta? meta,
+      List<String>? images,
+      String? thumbnail}) = _$ProductResponseImpl;
 
   factory _ProductResponse.fromJson(Map<String, dynamic> json) =
       _$ProductResponseImpl.fromJson;
 
   @override
   int? get id;
+  set id(int? value);
   @override
   String? get title;
+  set title(String? value);
   @override
   String? get description;
+  set description(String? value);
   @override
   String? get category;
+  set category(String? value);
   @override
   double? get price;
+  set price(double? value);
   @override
   double? get discountPercentage;
+  set discountPercentage(double? value);
   @override
   double? get rating;
+  set rating(double? value);
   @override
   int? get stock;
+  set stock(int? value);
   @override
   List<String>? get tags;
+  set tags(List<String>? value);
   @override
   String? get brand;
+  set brand(String? value);
   @override
   String? get sku;
+  set sku(String? value);
   @override
   int? get weight;
+  set weight(int? value);
   @override
   Dimensions? get dimensions;
+  set dimensions(Dimensions? value);
   @override
   String? get warrantyInformation;
+  set warrantyInformation(String? value);
   @override
   String? get shippingInformation;
+  set shippingInformation(String? value);
   @override
   String? get availabilityStatus;
+  set availabilityStatus(String? value);
   @override
   List<Review>? get reviews;
+  set reviews(List<Review>? value);
   @override
   String? get returnPolicy;
+  set returnPolicy(String? value);
   @override
   int? get minimumOrderQuantity;
+  set minimumOrderQuantity(int? value);
   @override
   Meta? get meta;
+  set meta(Meta? value);
   @override
   List<String>? get images;
+  set images(List<String>? value);
   @override
   String? get thumbnail;
+  set thumbnail(String? value);
 
   /// Create a copy of ProductResponse
   /// with the given fields replaced by the non-null parameter values.

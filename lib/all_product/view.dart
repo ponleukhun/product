@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:product/all_product/Widget/category_card.dart';
 import 'package:product/all_product/Widget/product_card.dart';
 import 'package:product/all_product/Widget/research_bar.dart';
+import 'package:product/product_detail/view.dart';
 import 'package:product/route/app_route.dart';
 
 import 'logic.dart';
@@ -26,97 +27,42 @@ class AllProductPage extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    CategoryCard(
-                      category: "Beauty",
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    CategoryCard(
-                      category: "Smart Phone",
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    CategoryCard(
-                      category: "fragrances",
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    CategoryCard(
-                      category: "funiture",
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    CategoryCard(
-                      category: "Computer",
-                    ),
-                  ],
-                ),
-              ),
+              Obx(() {
+                return SizedBox(
+                  height: 40,
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: state.categories.value.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return CategoryCard(
+                            category: state.categories.value[index]);
+                      }),
+                );
+              }),
               const SizedBox(
                 height: 10,
               ),
-              // ListView.builder(itemCount: state.productList.value.length,
-              //     itemBuilder:  (BuildContext context, int index) {
-              //   return ProductCard();
-              // }),
-              SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Column(
-                  children: [
-                    Text("${state.productList.value.length}"),
-                    ProductCard(
-                      // price: 20,
-                      // discountPercent: 70,
-                      //
-                      // onUpdate: () {
-                      //   Get.toNamed(AppRoute.ADDPRODUCT);
-                      // },
-                      onPressed: () {
-                        Get.toNamed(AppRoute.PRODUCTDETAIL);
-                      },
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    ProductCard(
-                      // discountPercent: 50,
-                      // price: 11.6,
-                      //
-                      // onUpdate: () {
-                      //   Get.toNamed(AppRoute.ADDPRODUCT);
-                      // }),
-                      onPressed: () {
-                        Get.toNamed(AppRoute.PRODUCTDETAIL);
-                      },
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    ProductCard(
-                      // discountPercent: 50,
-                      // price: 11.6,
-                      //
-                      // onUpdate: () {
-                      //   Get.toNamed(AppRoute.ADDPRODUCT);
-                      // }
-                      onPressed: () {
-                        Get.toNamed(AppRoute.PRODUCTDETAIL);
-                      },
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                  ],
-                ),
-              ),
+              Obx(() {
+                return Expanded(
+                  child: ListView.builder(
+                      // shrinkWrap: true,
+                      physics: AlwaysScrollableScrollPhysics(),
+                      itemCount: state.productList.value.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        var item = state.productList.value[index];
+                        return ProductCard(
+                          title: item.title,
+                          description: item.description,
+                          price: item.price,
+                          discount: item.discountPercentage,
+                          onPressed: () {
+                            Get.toNamed(AppRoute.PRODUCTDETAIL,
+                                arguments: {"productId": item.id});
+                          },
+                        );
+                      }),
+                );
+              })
             ],
           ),
         ),

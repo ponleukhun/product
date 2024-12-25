@@ -4,8 +4,9 @@ part 'gen/review.freezed.dart';
 
 part 'gen/review.g.dart';
 
-@freezed
+@unfreezed
 class Review with _$Review {
+  @JsonSerializable(fieldRename: FieldRename.none)
   factory Review({
     int? rating,
     String? comment,

@@ -8,8 +8,9 @@ part 'gen/product_response.freezed.dart';
 
 part 'gen/product_response.g.dart';
 
-@freezed
+@unfreezed
 class ProductResponse with _$ProductResponse {
+  @JsonSerializable(fieldRename: FieldRename.none)
   factory ProductResponse({
     int? id,
     String? title,

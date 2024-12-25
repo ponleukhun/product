@@ -21,10 +21,15 @@ Review _$ReviewFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Review {
   int? get rating => throw _privateConstructorUsedError;
+  set rating(int? value) => throw _privateConstructorUsedError;
   String? get comment => throw _privateConstructorUsedError;
+  set comment(String? value) => throw _privateConstructorUsedError;
   DateTime? get date => throw _privateConstructorUsedError;
+  set date(DateTime? value) => throw _privateConstructorUsedError;
   String? get reviewerName => throw _privateConstructorUsedError;
+  set reviewerName(String? value) => throw _privateConstructorUsedError;
   String? get reviewerEmail => throw _privateConstructorUsedError;
+  set reviewerEmail(String? value) => throw _privateConstructorUsedError;
 
   /// Serializes this Review to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -154,7 +159,8 @@ class __$$ReviewImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.none)
 class _$ReviewImpl implements _Review {
   _$ReviewImpl(
       {this.rating,
@@ -167,39 +173,20 @@ class _$ReviewImpl implements _Review {
       _$$ReviewImplFromJson(json);
 
   @override
-  final int? rating;
+  int? rating;
   @override
-  final String? comment;
+  String? comment;
   @override
-  final DateTime? date;
+  DateTime? date;
   @override
-  final String? reviewerName;
+  String? reviewerName;
   @override
-  final String? reviewerEmail;
+  String? reviewerEmail;
 
   @override
   String toString() {
     return 'Review(rating: $rating, comment: $comment, date: $date, reviewerName: $reviewerName, reviewerEmail: $reviewerEmail)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ReviewImpl &&
-            (identical(other.rating, rating) || other.rating == rating) &&
-            (identical(other.comment, comment) || other.comment == comment) &&
-            (identical(other.date, date) || other.date == date) &&
-            (identical(other.reviewerName, reviewerName) ||
-                other.reviewerName == reviewerName) &&
-            (identical(other.reviewerEmail, reviewerEmail) ||
-                other.reviewerEmail == reviewerEmail));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, rating, comment, date, reviewerName, reviewerEmail);
 
   /// Create a copy of Review
   /// with the given fields replaced by the non-null parameter values.
@@ -219,24 +206,29 @@ class _$ReviewImpl implements _Review {
 
 abstract class _Review implements Review {
   factory _Review(
-      {final int? rating,
-      final String? comment,
-      final DateTime? date,
-      final String? reviewerName,
-      final String? reviewerEmail}) = _$ReviewImpl;
+      {int? rating,
+      String? comment,
+      DateTime? date,
+      String? reviewerName,
+      String? reviewerEmail}) = _$ReviewImpl;
 
   factory _Review.fromJson(Map<String, dynamic> json) = _$ReviewImpl.fromJson;
 
   @override
   int? get rating;
+  set rating(int? value);
   @override
   String? get comment;
+  set comment(String? value);
   @override
   DateTime? get date;
+  set date(DateTime? value);
   @override
   String? get reviewerName;
+  set reviewerName(String? value);
   @override
   String? get reviewerEmail;
+  set reviewerEmail(String? value);
 
   /// Create a copy of Review
   /// with the given fields replaced by the non-null parameter values.

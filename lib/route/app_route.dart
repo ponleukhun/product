@@ -1,6 +1,7 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:product/add_product/binding.dart';
 import 'package:product/add_product/view.dart';
+import 'package:product/model/product_response/product_response.dart';
 import 'package:product/product_detail/binding.dart';
 import 'package:product/product_detail/view.dart';
 
