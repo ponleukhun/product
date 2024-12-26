@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:product/all_product/state.dart';
 import 'package:product/model/product_response/product_response.dart';
+import 'package:product/product_detail/widget/review.dart';
 
 import 'state.dart';
 

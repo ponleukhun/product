@@ -1,14 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:loading_container_flutter/loading_container_flutter.dart';
 import 'package:product/product_detail/widget/review.dart';
 
 import 'logic.dart';
 import 'state.dart';
 
-class ProductDetailPage extends StatelessWidget {
+class ProductDetailPage extends StatefulWidget {
   ProductDetailPage({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<ProductDetailPage> createState() => _ProductDetailPageState();
+}
+
+class _ProductDetailPageState extends State<ProductDetailPage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   final ProductDetailLogic logic = Get.put(ProductDetailLogic());
   final ProductDetailState state = Get.find<ProductDetailLogic>().state;
@@ -16,100 +28,122 @@ class ProductDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Product Detail"),
-          backgroundColor: Colors.green.withOpacity(0.2),
-          actions: [
-            // IconButton(onPressed: () {}, icon: Icon(Icons.more_vert))
-            MenuAnchor(
-              builder: (BuildContext context, MenuController controller,
-                  Widget? child) {
-                return IconButton(
-                  onPressed: () {
-                    if (controller.isOpen) {
-                      controller.close();
-                    } else {
-                      controller.open();
-                    }
-                  },
-                  icon: const Icon(
-                    Icons.more_vert,
-                    color: Colors.black,
-                  ),
-                );
-              },
-
-              ///List of menu
-              menuChildren: [
-                ///Update To Do
-                MenuItemButton(
-                  leadingIcon: const Icon(Icons.update),
-                  child: const Text(
-                    "Update",
-                    selectionColor: Colors.lightBlueAccent,
-                  ),
-                  onPressed: () {},
+      appBar: AppBar(
+        title: Text("Product Detail"),
+        backgroundColor: Colors.green.withOpacity(0.2),
+        actions: [
+          // IconButton(onPressed: () {}, icon: Icon(Icons.more_vert))
+          MenuAnchor(
+            builder: (BuildContext context, MenuController controller,
+                Widget? child) {
+              return IconButton(
+                onPressed: () {
+                  if (controller.isOpen) {
+                    controller.close();
+                  } else {
+                    controller.open();
+                  }
+                },
+                icon: const Icon(
+                  Icons.more_vert,
+                  color: Colors.black,
                 ),
+              );
+            },
 
-                ///Delete To Do
-                MenuItemButton(
-                    leadingIcon: const Icon(Icons.delete),
-                    child: const Text(
-                      "Delete",
-                    ),
+            ///List of menu
+            menuChildren: [
+              ///Update To Do
+              MenuItemButton(
+                leadingIcon: const Icon(Icons.update),
+                child: const Text(
+                  "Update",
+                  selectionColor: Colors.lightBlueAccent,
+                ),
+                onPressed: () {},
+              ),
 
-                    ///Showing dialog box
-                    onPressed: () {})
-              ],
-            ),
-          ],
-        ),
-        body: SingleChildScrollView(
-          child: Container(
-            color: Colors.white,
-            padding: EdgeInsets.all(10),
-            child: Column(
-              children: [
-                _banner(),
-                _productInfo(),
-                _reviewList(),
-              ],
-            ),
+              ///Delete To Do
+              MenuItemButton(
+                  leadingIcon: const Icon(Icons.delete),
+                  child: const Text(
+                    "Delete",
+                  ),
+
+                  ///Showing dialog box
+                  onPressed: () {})
+            ],
           ),
-        ));
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: GetBuilder<ProductDetailLogic>(builder: (logic) {
+          if (state.product.value.reviews == null) {
+            return Container(
+              padding: EdgeInsets.symmetric(vertical: 300),
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          } else {
+            return Container(
+                color: Colors.white,
+                padding: EdgeInsets.all(10),
+                child: Column(
+                  children: [
+                    _banner(),
+                    _productInfo(),
+                    _reviewList(),
+                  ],
+                ));
+          }
+        }),
+      ),
+    );
   }
 
   Widget _banner() {
     return GetBuilder<ProductDetailLogic>(builder: (logic) {
-      return Container(
-        width: double.infinity,
+      return SizedBox(
         height: 150,
-        child: Image.network(
-          'https://th.bing.com/th/id/OIP.jX61ytVi7DIfFXwdcEr9JAHaEf?rs=1&pid=ImgDetMain',
-          loadingBuilder: (BuildContext context, Widget child,
-              ImageChunkEvent? loadingProgress) {
-            if (loadingProgress == null) {
-              return child;
-            }
-            return Center(
-              child: CircularProgressIndicator(
-                value: loadingProgress.expectedTotalBytes != null
-                    ? loadingProgress.cumulativeBytesLoaded /
-                        (loadingProgress.expectedTotalBytes ?? 1)
-                    : null,
-              ),
+        width: 340,
+        child: ListView.builder(
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          physics: AlwaysScrollableScrollPhysics(),
+          itemCount: state.product.value.images?.length,
+          itemBuilder: (BuildContext context, int index) {
+            return Image.network(
+              width: 340,
+              state.product.value.images![index].toString(),
+              loadingBuilder: (BuildContext context, Widget child,
+                  ImageChunkEvent? loadingProgress) {
+                if (loadingProgress == null) {
+                  return child;
+                }
+                return Container(
+                  padding: EdgeInsets.symmetric(horizontal: 160),
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      value: loadingProgress.expectedTotalBytes != null
+                          ? loadingProgress.cumulativeBytesLoaded /
+                              (loadingProgress.expectedTotalBytes ?? 1)
+                          : null,
+                    ),
+                  ),
+                );
+              },
+              errorBuilder:
+                  (BuildContext context, Object error, StackTrace? stackTrace) {
+                return Center(
+                  child: Text(
+                    'Image failed to load',
+                    style: TextStyle(color: Colors.red),
+                  ),
+                );
+              },
             );
           },
-          errorBuilder:
-              (BuildContext context, Object error, StackTrace? stackTrace) {
-            return Center(
-              child: Text(
-                'Image failed to load',
-                style: TextStyle(color: Colors.red),
-              ),
-            );
-          },
-          width: double.infinity,
         ),
       );
     });
@@ -216,7 +250,7 @@ class ProductDetailPage extends StatelessWidget {
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
                 ),
                 Text(
-                  "${state.product.value.brand}",
+                  state.product.value.brand ?? "",
                   style: TextStyle(fontSize: 14),
                 ),
               ],
@@ -244,7 +278,7 @@ class ProductDetailPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Shipping Information",
+                  "Shipping",
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
                 ),
                 Text(
@@ -287,9 +321,16 @@ class ProductDetailPage extends StatelessWidget {
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
           physics: AlwaysScrollableScrollPhysics(),
-          itemCount: 3,
-          itemBuilder: (context, index) {
-            return Review();
+          itemCount: state.product.value.reviews!.length,
+          itemBuilder: (BuildContext context, int index) {
+            var item = state.product.value.reviews?[index];
+            return Review(
+              name: item?.reviewerName,
+              email: item?.reviewerEmail,
+              comment: item?.comment,
+              rate: item?.rating,
+              date: item?.date,
+            );
           },
         ),
       );

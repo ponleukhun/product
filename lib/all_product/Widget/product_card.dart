@@ -9,7 +9,7 @@ class ProductCard extends StatelessWidget {
   final String? description;
   final double? price;
   final double? discount;
-  final Uint8List? imageUrl;
+  final String? thumnail;
 
   const ProductCard({
     super.key,
@@ -18,7 +18,7 @@ class ProductCard extends StatelessWidget {
     this.description,
     this.price,
     this.discount,
-    this.imageUrl,
+    this.thumnail,
   });
 
   @override
@@ -36,12 +36,10 @@ class ProductCard extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              width: 100,
+              width: 80,
               child: Image.network(
-                // Base64Decoder().convert("$imageUrl") != null
-                //     ? Base64Decoder().convert("$imageUrl").toString()
-                // :
-                'https://th.bing.com/th/id/OIP.1zAR2E_qvxtmKokY3uHZvwHaHa?w=1024&h=1024&rs=1&pid=ImgDetMain',
+                thumnail ??
+                    'https://th.bing.com/th/id/OIP.1zAR2E_qvxtmKokY3uHZvwHaHa?w=1024&h=1024&rs=1&pid=ImgDetMain',
                 loadingBuilder: (BuildContext context, Widget child,
                     ImageChunkEvent? loadingProgress) {
                   if (loadingProgress == null) {

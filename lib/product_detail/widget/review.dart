@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class Review extends StatelessWidget {
+  final String? name;
+  final String? email;
+  final int? rate;
+  final String? comment;
+  final DateTime? date;
+
   const Review({
     super.key,
+    this.name,
+    this.email,
+    this.rate,
+    this.comment,
+    this.date,
   });
 
   @override
@@ -15,16 +27,10 @@ class Review extends StatelessWidget {
           margin: EdgeInsets.fromLTRB(0, 10, 10, 10),
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
-              color: Colors.green.withOpacity(0.13),
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(width: 0.2, color: Colors.black12),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black12,
-                  offset: Offset(0, 3),
-                  blurRadius: 3,
-                )
-              ]),
+            color: Colors.green.withOpacity(0.13),
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(width: 0.2, color: Colors.black12),
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -36,11 +42,11 @@ class Review extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Scarlett Wright",
+                        Text(name ?? "Scarlett Wright",
                             style: TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w500)),
                         Text(
-                          "scarlett.wright@x.dummyjson.com",
+                          email ?? "scarlett.wright@x.dummyjson.com",
                           style: TextStyle(color: Colors.black38),
                         ),
                       ],
@@ -55,7 +61,7 @@ class Review extends StatelessWidget {
                           Icons.star,
                           color: Colors.yellow,
                         ),
-                        Text(" 3"),
+                        Text(rate != null ? rate.toString() : " 3"),
                       ],
                     ),
                   ),
@@ -70,14 +76,14 @@ class Review extends StatelessWidget {
                 color: Colors.black38,
               ),
               Text(
-                "Very unhappy with my purchase!",
+                comment ?? "Very unhappy with my purchase!",
                 style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
-                    "3 month ago",
+                    "${date}",
                     style: TextStyle(color: Colors.black38),
                   ),
                 ],

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:product/all_product/view.dart';
 import 'package:product/model/product_response/product_response.dart';
 
@@ -15,6 +16,9 @@ class AllProductLogic extends GetxController {
     super.onInit();
     fetchProduct(); // Call the function to fetch data on controller initialization
     fetchCategory();
+    state.pagingController.addPageRequestListener((pageKey) {
+      fetchPage(pageKey);
+    });
   }
 
   @override
@@ -64,29 +68,19 @@ class AllProductLogic extends GetxController {
     }
   }
 
-// void detailScreen(
-//   String? title,
-//   double? price,
-//   double? discount,
-//   String? description,
-//   int? stock,
-//   double? rating,
-//   String? brand,
-//   String? warantyInfo,
-//   String? shipping,
-//   String? availabilityStatus,
-// ) {
-//   Get.toNamed(AppRoute.PRODUCTDETAIL(
-//     title: item.title,
-//     description: item.description,
-//     price: item.price,
-//     discount: item.discountPercentage,
-//     stock: item.stock,
-//     rating: item.rating,
-//     brand: item.brand,
-//     warantyInfo: item.warrantyInformation,
-//     shipping: item.shippingInformation,
-//     availabilityStatus: item.availabilityStatus,
-//   ));
-// }
+  Future<void> fetchPage(int pageKey) async {
+    try {
+      final newItems =
+          await RemoteApi.getList(pageKey, state.productList.length);
+      final isLastPage = newItems.length < _pageSize;
+      if (isLastPage) {
+        state.pagingController.appendLastPage(newItems);
+      } else {
+        final nextPageKey = pageKey + newItems.length;
+        state.pagingController.appendPage(newItems, nextPageKey);
+      }
+    } catch (error) {
+      state.pagingController.error = error;
+    }
+  }
 }

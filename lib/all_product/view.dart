@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:product/all_product/Widget/category_card.dart';
 import 'package:product/all_product/Widget/product_card.dart';
 import 'package:product/all_product/Widget/research_bar.dart';
@@ -44,6 +45,7 @@ class AllProductPage extends StatelessWidget {
               ),
               Obx(() {
                 return Expanded(
+                  child:PagedListView(pagingController: pagingController, builderDelegate: builderDelegate)
                   child: ListView.builder(
                       // shrinkWrap: true,
                       physics: AlwaysScrollableScrollPhysics(),
@@ -51,6 +53,7 @@ class AllProductPage extends StatelessWidget {
                       itemBuilder: (BuildContext context, int index) {
                         var item = state.productList.value[index];
                         return ProductCard(
+                          thumnail: item.thumbnail,
                           title: item.title,
                           description: item.description,
                           price: item.price,
