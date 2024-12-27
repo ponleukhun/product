@@ -5,6 +5,8 @@ import 'package:product/model/product_response/product_response.dart';
 class AllProductState {
   var productList = <ProductResponse>[].obs;
   var categories = <String>[].obs;
+  var skip = 1.obs;
+  var limit = 10.obs;
   PagingController<int, ProductResponse> pagingController =
-      PagingController(firstPageKey: 0);
+      PagingController(firstPageKey: 1);
 }

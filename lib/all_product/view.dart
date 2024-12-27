@@ -4,6 +4,7 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:product/all_product/Widget/category_card.dart';
 import 'package:product/all_product/Widget/product_card.dart';
 import 'package:product/all_product/Widget/research_bar.dart';
+import 'package:product/model/product_response/product_response.dart';
 import 'package:product/product_detail/view.dart';
 import 'package:product/route/app_route.dart';
 
@@ -43,29 +44,43 @@ class AllProductPage extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              Obx(() {
-                return Expanded(
-                  child:PagedListView(pagingController: pagingController, builderDelegate: builderDelegate)
-                  child: ListView.builder(
-                      // shrinkWrap: true,
-                      physics: AlwaysScrollableScrollPhysics(),
-                      itemCount: state.productList.value.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        var item = state.productList.value[index];
-                        return ProductCard(
-                          thumnail: item.thumbnail,
-                          title: item.title,
-                          description: item.description,
-                          price: item.price,
-                          discount: item.discountPercentage,
-                          onPressed: () {
-                            Get.toNamed(AppRoute.PRODUCTDETAIL,
-                                arguments: {"productId": item.id});
-                          },
-                        );
-                      }),
+              Expanded(child: GetBuilder<AllProductLogic>(builder: (logic) {
+                return PagedListView(
+                  pagingController: state.pagingController,
+                  builderDelegate: PagedChildBuilderDelegate<ProductResponse>(
+                    itemBuilder: (context, item, index) => ProductCard(
+                      thumnail: item.thumbnail,
+                      title: "${item.title} + ${item.id}",
+                      description: item.description,
+                      price: item.price,
+                      discount: item.discountPercentage,
+                      onPressed: () {
+                        Get.toNamed(AppRoute.PRODUCTDETAIL,
+                            arguments: {"productId": item.id});
+                      },
+                    ),
+                  ),
                 );
               })
+                  // child: ListView.builder(
+                  //     // shrinkWrap: true,
+                  //     physics: AlwaysScrollableScrollPhysics(),
+                  //     itemCount: state.productList.value.length,
+                  //     itemBuilder: (BuildContext context, int index) {
+                  //       var item = state.productList.value[index];
+                  //       return ProductCard(
+                  //         thumnail: item.thumbnail,
+                  //         title: item.title,
+                  //         description: item.description,
+                  //         price: item.price,
+                  //         discount: item.discountPercentage,
+                  //         onPressed: () {
+                  //           Get.toNamed(AppRoute.PRODUCTDETAIL,
+                  //               arguments: {"productId": item.id});
+                  //         },
+                  //       );
+                  //     }),
+                  )
             ],
           ),
         ),
