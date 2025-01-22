@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:loading_container_flutter/loading_container_flutter.dart';
 import 'package:product/product_detail/widget/review.dart';
 
 import 'logic.dart';
@@ -29,7 +28,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Product Detail"),
+        title: Text("Product Detail "),
         backgroundColor: Colors.green.withOpacity(0.2),
         actions: [
           // IconButton(onPressed: () {}, icon: Icon(Icons.more_vert))
