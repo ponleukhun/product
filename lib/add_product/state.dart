@@ -1,5 +1,6 @@
+import 'package:get/get.dart';
+
 class AddProductState {
-  AddProductState() {
-    ///Initialize variables
-  }
+  var categories = <String>[].obs;
+  var selectedCategory = "".obs;
 }

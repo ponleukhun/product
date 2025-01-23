@@ -1,15 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:product/add_product/widget/textFeild_card.dart';
 
-//list of category dropdown
-const List<String> list = <String>[
-  "Choose Category",
-  'Beauty',
-  'Smart Phone',
-  'Fregants',
-  'Funiture'
-];
-
 class AddProduct extends StatefulWidget {
   const AddProduct({super.key});
 
@@ -18,8 +9,6 @@ class AddProduct extends StatefulWidget {
 }
 
 class _AddProductState extends State<AddProduct> {
-  String dropdownValue = list.first;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,51 +60,51 @@ class _AddProductState extends State<AddProduct> {
                 height: 10,
               ),
               //category dropdownList
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Category"),
-                  Container(
-                    padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                    height: 60,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        color: Colors.green.withOpacity(0.15),
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(width: 1)),
-                    child: DropdownButton<String>(
-                      value: dropdownValue,
-                      icon: const Icon(Icons.arrow_drop_down),
-                      elevation: 16,
-                      style: const TextStyle(color: Colors.black87),
-                      underline: Container(
-                        height: 0,
-                        color: Colors.green.withOpacity(0.15),
-                      ),
-                      isExpanded: true,
-                      menuWidth: 250,
-                      onChanged: (String? value) {
-                        // This is called when the user selects an item.
-                        setState(() {
-                          dropdownValue = value!;
-                        });
-                      },
-                      items: list.map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(
-                            value,
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.black.withOpacity(0.75)),
-                          ),
-                        );
-                      }).toList(),
-                    ),
-                  )
-                ],
-              ),
+              // Column(
+              //   crossAxisAlignment: CrossAxisAlignment.start,
+              //   children: [
+              //     Text("Category"),
+              //     Container(
+              //       padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+              //       height: 60,
+              //       width: double.infinity,
+              //       decoration: BoxDecoration(
+              //           color: Colors.green.withOpacity(0.15),
+              //           borderRadius: BorderRadius.circular(5),
+              //           border: Border.all(width: 1)),
+              //       child: DropdownButton<String>(
+              //         value: dropdownValue,
+              //         icon: const Icon(Icons.arrow_drop_down),
+              //         elevation: 16,
+              //         style: const TextStyle(color: Colors.black87),
+              //         underline: Container(
+              //           height: 0,
+              //           color: Colors.green.withOpacity(0.15),
+              //         ),
+              //         isExpanded: true,
+              //         menuWidth: 250,
+              //         onChanged: (String? value) {
+              //           // This is called when the user selects an item.
+              //           setState(() {
+              //             dropdownValue = value!;
+              //           });
+              //         },
+              //         items: list.map<DropdownMenuItem<String>>((String value) {
+              //           return DropdownMenuItem<String>(
+              //             value: value,
+              //             child: Text(
+              //               value,
+              //               style: TextStyle(
+              //                   fontSize: 15,
+              //                   fontWeight: FontWeight.w500,
+              //                   color: Colors.black.withOpacity(0.75)),
+              //             ),
+              //           );
+              //         }).toList(),
+              //       ),
+              //     )
+              //   ],
+              // ),
               SizedBox(
                 height: 10,
               ),
